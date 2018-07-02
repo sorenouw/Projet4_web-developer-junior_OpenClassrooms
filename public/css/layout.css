@@ -1,0 +1,39 @@
+/*----- Header -----*/
+header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 90%;
+}
+.admin{
+  display: flex;
+}
+.post{
+  margin: auto;
+}
+.comment{
+  margin: 5px;
+  padding: 5px;
+  border: 1px;
+  border-style: solid;
+  border-color: red;
+}
+.comment_button{
+  display: flex;
+  justify-content: center;
+
+}
+.news {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+table{
+  margin: auto;
+}
+.admin{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 90%;
+}
