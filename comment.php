@@ -37,7 +37,6 @@ if (isset($_POST['1']) && !empty($_POST)) {
         'id'=> $_GET['comment_id'],
 
     ));
-    var_dump('coucou');
 }
 
 
@@ -90,8 +89,7 @@ $req->execute(array(
           <a href="editComment.php?id=<?= $_GET['id']?>&comment_id=<?= $comment['id'] ?>"> modifier</a>
           <?php
         } ?>
-            <form class="" action=comment.php?id=<?php echo $_GET[ 'id']; ?>&comment_id=
-              <?php echo $comment['id']?> method="post">
+            <form class="" action=comment.php?id=<?php echo $_GET[ 'id']; ?>&comment_id=<?php echo $comment['id']?> method="post">
               <button type="submit" name="2">Signaler !</button>
             </form>
       </div>

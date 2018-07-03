@@ -16,7 +16,7 @@ $articles = $articleManager->getList();
       <h3><?php echo htmlspecialchars($article->title()); ?></h3>
       <p><?php echo htmlspecialchars($article->content()); ?>
       <br />
-      <em>Publié le <?php echo htmlspecialchars($article->date()); ?> </em>
+      <em>Publié le<?php echo htmlspecialchars($article->date()); ?> </em>
       <em><a href="comment.php?id=<?php echo $article->id() ?>">Comments</a></em>
       </p>
   </div>
