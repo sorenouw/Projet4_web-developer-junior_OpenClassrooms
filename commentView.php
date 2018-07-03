@@ -3,6 +3,8 @@ session_start();
 // Connexion à la base de données
 require "Article.php";
 require "ArticleManager.php";
+require "Comment.php";
+require "CommentManager.php";
 
 try {
     $bdd = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
@@ -17,6 +19,14 @@ try {
       'id'=>$id,
   ));
   $post = $articleManager->getPost($article);
+
+  // récupération des Commentaires
+  $commentManager = new CommentManager();
+  $postId = $_GET['id'];
+  $comment = new Comment(Array(
+      'postId'=>$postId,
+  ));
+  $commentFinal = $commentManager->getList($comment);
 
 
 
@@ -44,12 +54,6 @@ if (isset($_POST['1']) && !empty($_POST)) {
     ));
 }
 
-
-// récupération des Commentaires
-$req = $bdd->prepare("SELECT * FROM comment WHERE post_id = :post_id  ORDER BY date_publish DESC LIMIT 0, 5");
-$req->execute(array(
-  'post_id'=> $_GET['id'],
-));
 ?>
 
 
@@ -79,31 +83,28 @@ $req->execute(array(
 
 
   <h2>Commentaires</h2>
-
-  <?php while ($comment = $req->fetch()) {
-        ?>
-    <div class="comment">
-      <div class="comment_content">
-        <p><strong><?php echo htmlspecialchars($comment['login']); ?></strong> le
-          <?php echo $comment['date_publish']; ?></p>
-        <p>
-          <?php echo nl2br(htmlspecialchars($comment['comment'])); ?>
-        </p>
-      </div>
-      <div class="comment_button">
-          <?php if (!empty($_SESSION["user"])) {
-            ?>
-          <a href="editComment.php?id=<?= $_GET['id']?>&comment_id=<?= $comment['id'] ?>"> modifier</a>
-          <?php
-        } ?>
-            <form class="" action=comment.php?id=<?php echo $_GET[ 'id']; ?>&comment_id=<?php echo $comment['id']?> method="post">
-              <button type="submit" name="2">Signaler !</button>
-            </form>
-      </div>
+<?php foreach ($commentFinal as $comment): ?>
+  <div class="comment">
+    <div class="comment_content">
+      <p><strong><?php echo htmlspecialchars($comment->login()); ?></strong> le
+        <?php echo $comment->date(); ?></p>
+      <p>
+        <?php echo nl2br(htmlspecialchars($comment->comment())); ?>
+      </p>
     </div>
-  <?php
-    }
-?>
+    <div class="comment_button">
+        <?php if (!empty($_SESSION["user"])) {
+          ?>
+        <a href="editComment.php?id=<?= $_GET['id']?>&comment_id=<?= $comment->id(); ?>"> modifier</a>
+        <?php
+      } ?>
+          <form class="" action=comment.php?id=<?php echo $_GET[ 'id']; ?>&comment_id=<?php echo $comment->id();?> method="post">
+            <button type="submit" name="2">Signaler !</button>
+          </form>
+    </div>
+  </div>
+<?php endforeach; ?>
+
     <form action="comment.php?id=<?= $_GET['id']  ?>" method="post">
       <div>
         <label for="author">Auteur</label><br />

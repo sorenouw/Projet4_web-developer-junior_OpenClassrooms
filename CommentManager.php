@@ -1,5 +1,5 @@
 <?php
-require "Manager.php";
+require_once "Manager.php";
 
 class CommentManager extends Manager {
 
@@ -11,11 +11,11 @@ class CommentManager extends Manager {
       'post_id'=> $comment->post_id(),
     ));
    }
-   public function getList(){
+   public function getList(Comment $comment){
      $commentaires = [];
-     $req = $this->getDb()->query("SELECT * FROM comment WHERE post_id = :post_id  ORDER BY date_publish DESC LIMIT 0, 5");
+     $req = $this->getDb()->prepare("SELECT * FROM comment WHERE post_id = :post_id  ORDER BY date_publish DESC LIMIT 0, 5");
      $req->execute(array(
-       'post_id'=> $article->post_id(),
+       'post_id'=> $comment->postId(),
    ));
      while ($data = $req->fetch()){
        $commentaires[]=new Comment($data);
@@ -25,7 +25,7 @@ class CommentManager extends Manager {
    public function getComment(Comment $comment){
      $req = $this->getDb()->prepare("SELECT * FROM comment WHERE id = :id");
      $req->execute(array(
-       'id'=> $comment->id(),
+       'id'=> $comment->postId(),
    ));
    while ($data = $req->fetch()){
      $getComment[]=new Comment($data);

@@ -1,5 +1,5 @@
 <?php
-class Article {
+class Comment {
   private $_login;
   private $_comment;
   private $_date;
@@ -12,7 +12,7 @@ class Article {
 
   public function hydrate(Array $data){
     if(isset($data["login"])){
-      $this->setTitle($data[ "login"]);
+      $this->setLogin($data[ "login"]);
     }
     if(isset($data["comment"])){
       $this->setContent($data[ "comment"]);
@@ -48,7 +48,7 @@ class Article {
   }
 
   // Setters
-  public function setTitle($login){
+  public function setLogin($login){
     if(is_string($login)){
       $this->_login = $login;
     }
