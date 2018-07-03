@@ -1,6 +1,8 @@
 <?php
 session_start();
 // Connexion à la base de données
+require "Article.php";
+require "ArticleManager.php";
 
 try {
     $bdd = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
@@ -9,9 +11,12 @@ try {
 }
 
 // Récupération du billet
-$req = $bdd->prepare("SELECT id, title, content, date_publish FROM post WHERE id = ?");
-$req->execute(array($_GET['id']));
-$post = $req->fetch();
+	$articleManager = new ArticleManager();
+  $id = $_GET['id'];
+  $article = new Article(Array(
+      'id'=>$id,
+  ));
+  $post = $articleManager->getPost($article);
 
 
 
@@ -57,19 +62,21 @@ $req->execute(array(
   <h2>Mon super blog !</h2> <a href="index.php">Retour à la liste des post</a>
 
 
-
+<?php foreach ($post as $post): ?>
   <article class="news">
     <h3>
-        <?php echo htmlspecialchars($post['title']); ?>
-        <em>le <?php echo $post['date_publish']; ?></em>
+        <?php echo htmlspecialchars($post->title()); ?>
+        <em>le <?php echo $post->date(); ?></em>
     </h3>
 
     <p>
       <?php
-    echo nl2br(htmlspecialchars($post['content']));
+    echo nl2br(htmlspecialchars($post->content()));
     ?>
     </p>
   </article>
+<?php endforeach; ?>
+
 
   <h2>Commentaires</h2>
 

@@ -4,6 +4,7 @@ require "Article.php";
 require "ArticleManager.php";
 $articleManager = new ArticleManager();
 $articles = $articleManager->getList();
+
 ?>
 
 <?php $title = 'Mon blog'; ?>

@@ -18,4 +18,20 @@ class ArticleManager extends Manager {
      }
      return $articles;
    }
+   public function delete(){
+
+   }
+   public function getPost(Article $article){
+     $req = $this->getDb()->prepare("SELECT id, title, content, date_publish FROM post WHERE id = :id");
+     $req->execute(array(
+       'id'=> $article->id(),
+   ));
+   while ($data = $req->fetch()){
+     $getPost[]=new Article($data);
+   }
+   return $getPost;
+   }
+   public function editPost(){
+
+   }
 }

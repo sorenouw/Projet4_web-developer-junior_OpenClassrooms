@@ -12,18 +12,13 @@ if (isset($_POST['5']) && !empty($_POST)) {
         $validation = false;
     }
     if ($validation === true) {
-    //     $req = $bdd->prepare("INSERT INTO post (title, content,date_publish) VALUES (:title, :content, now()) ");
-    //     $req->execute(array(
-    //   'title'=> $title,
-    //   'content'=> $content,
-    // ));
+
     $articleManager = new ArticleManager();
     $article = new Article(Array(
         'title'=> $title,
         'content'=> $content,
     ));
     $articleManager->add($article);
-    var_dump($article);
 
         // header('Location: admin.php');
     }
