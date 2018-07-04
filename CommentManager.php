@@ -6,9 +6,9 @@ class CommentManager extends Manager {
   public function add(Comment $comment){
     $req = $this->getDb()->prepare("INSERT INTO comment (login, comment, post_id) VALUES (:login, :comment, :post_id) ");
     $req->execute(array(
-      'title'=> $comment->login(),
-      'content'=> $comment->comment(),
-      'post_id'=> $comment->post_id(),
+      'login'=> $comment->login(),
+      'comment'=> $comment->comment(),
+      'post_id'=> $comment->postId(),
     ));
    }
    public function getList(Comment $comment){
@@ -25,7 +25,7 @@ class CommentManager extends Manager {
    public function getComment(Comment $comment){
      $req = $this->getDb()->prepare("SELECT * FROM comment WHERE id = :id");
      $req->execute(array(
-       'id'=> $comment->postId(),
+       'id'=> $comment->id(),
    ));
    while ($data = $req->fetch()){
      $getComment[]=new Comment($data);
