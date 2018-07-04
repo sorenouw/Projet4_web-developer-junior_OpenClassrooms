@@ -16,11 +16,11 @@ if (isset($_POST['4'])) {
         ));
     var_dump('Supprimé');
 } elseif (isset($_POST['5'])) {
-        $req= $bdd->prepare("DELETE FROM comment WHERE id = :id");
-        $req->execute(array(
+    $req= $bdd->prepare("DELETE FROM comment WHERE id = :id");
+    $req->execute(array(
             'id'=>$_GET['id']
         ));
-    }
+}
 // Récupération des post
   $req = $bdd->query("SELECT id, title, content, date_publish FROM post ORDER BY date_publish DESC");
 
@@ -51,7 +51,7 @@ if (isset($_POST['4'])) {
 					<a href="editPost.php?id=<?php echo $post['id']; ?>">Éditer</a>
 				</td>
 				<td>
-					<a href="comment.php?id=<?php echo $post['id']; ?>">Lire</a>
+					<a href="commentView.php?id=<?php echo $post['id']; ?>">Lire</a>
 				</td>
 				<td>
 					<form class="" action=admin.php?id=<?php echo $post['id']; ?> method="post">
