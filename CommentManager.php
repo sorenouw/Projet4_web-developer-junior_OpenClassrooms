@@ -38,4 +38,10 @@ class CommentManager extends Manager {
    public function delete(){
 
    }
+   public function report(Comment $comment){
+     $req = $this->getDb()->prepare("UPDATE comment SET reported = 1 WHERE id = :id");
+     $req->execute(array(
+         'id'=> $comment->id(),
+     ));
+   }
 }

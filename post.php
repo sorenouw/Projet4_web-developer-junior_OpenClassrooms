@@ -3,7 +3,7 @@ session_start();
 require "Article.php";
 require "ArticleManager.php";
 
-// post de commentaire
+// poster un article
 if (isset($_POST['5']) && !empty($_POST)) {
     $title = $_POST['title'];
     $content = $_POST['content'];
@@ -13,13 +13,12 @@ if (isset($_POST['5']) && !empty($_POST)) {
     }
     if ($validation === true) {
 
-    $articleManager = new ArticleManager();
-    $article = new Article(Array(
+      $articleManager = new ArticleManager();
+      $article = new Article(Array(
         'title'=> $title,
         'content'=> $content,
-    ));
-    $articleManager->add($article);
-
+      ));
+      $articleManager->add($article);
         // header('Location: admin.php');
     }
 }

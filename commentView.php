@@ -6,11 +6,6 @@ require "ArticleManager.php";
 require "Comment.php";
 require "CommentManager.php";
 
-try {
-    $bdd = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
-} catch (Exception $e) {
-    die('Erreur : '.$e->getMessage());
-}
 
 // Récupération du billet
 	$articleManager = new ArticleManager();
@@ -20,13 +15,6 @@ try {
   ));
   $post = $articleManager->getPost($article);
 
-  // récupération des Commentaires
-  $commentManager = new CommentManager();
-  $postId = $_GET['id'];
-  $comment = new Comment(Array(
-      'postId'=>$postId,
-  ));
-  $commentFinal = $commentManager->getList($comment);
 
 
 
@@ -34,25 +22,36 @@ try {
 if (isset($_POST['1']) && !empty($_POST)) {
     $auteur = $_POST['author'];
     $commentaire = $_POST['comment'];
+    $postId = $_GET['id'];
     $validation = true;
     if (empty($auteur) && empty($commentaire)) {
         $validation = false;
     }
     if ($validation === true) {
-        $req = $bdd->prepare("INSERT INTO comment (login, comment, post_id) VALUES (:login, :comment, :post_id) ");
-        $req->execute(array(
+      $commentManager = new CommentManager();
+      $comment = new Comment(Array(
       'login'=> $auteur,
       'comment'=> $commentaire,
-      'post_id'=> $_GET['id'],
+      'postId'=> $postId,
     ));
+    $commentManager->add($comment);
     }
 } elseif (isset($_POST['2'])) {
-    $req = $bdd->prepare("UPDATE comment SET reported = 1 WHERE id = :id");
-    $req->execute(array(
-        'id'=> $_GET['comment_id'],
-
-    ));
+  $id = $_GET['id'];
+  $commentManager = new CommentManager();
+  $comment = new Comment(Array(
+  'id'=> $id,
+));
+$commentManager->report($comment);
 }
+
+// récupération des Commentaires
+$commentManager = new CommentManager();
+$postId = $_GET['id'];
+$comment = new Comment(Array(
+    'postId'=>$postId,
+));
+$commentFinal = $commentManager->getList($comment);
 
 ?>
 
@@ -98,14 +97,14 @@ if (isset($_POST['1']) && !empty($_POST)) {
         <a href="editComment.php?id=<?= $_GET['id']?>&comment_id=<?= $comment->id(); ?>"> modifier</a>
         <?php
       } ?>
-          <form class="" action=comment.php?id=<?php echo $_GET[ 'id']; ?>&comment_id=<?php echo $comment->id();?> method="post">
+          <form class="" action=commentView.php?id=<?= $_GET[ 'id']; ?>&comment_id=<?= $comment->id();?> method="post">
             <button type="submit" name="2">Signaler !</button>
           </form>
     </div>
   </div>
 <?php endforeach; ?>
 
-    <form action="comment.php?id=<?= $_GET['id']  ?>" method="post">
+    <form action="commentView.php?id=<?= $_GET['id']  ?>" method="post">
       <div>
         <label for="author">Auteur</label><br />
         <input type="text" id="author" name="author" />
