@@ -45,7 +45,7 @@ class CommentManager extends Manager
     }
     public function delete(Comment $comment)
     {
-      $req= $this->getDb()->prepare("DELETE FROM post WHERE id = :id");
+      $req= $this->getDb()->prepare("DELETE FROM comment WHERE id = :id");
       $req->execute(array(
               'id'=> $comment->id(),
           ));
@@ -56,5 +56,20 @@ class CommentManager extends Manager
         $req->execute(array(
          'id'=> $comment->id(),
      ));
+    }
+    public function getReported()
+    {
+      $getReported=[];
+        $req = $this->getDb()->query("SELECT * FROM comment WHERE reported = '1'  ORDER BY date_publish DESC");
+        while ($data = $req->fetch()){
+          $getReported[]=new Comment($data);
+        }
+        return $getReported;
+    }
+    public function deleteAll(Comment $comment){
+      $req= $this->getDb()->prepare("DELETE FROM comment WHERE post_id = :post_id");
+      $req->execute(array(
+              'post_id'=> $comment->postId(),
+          ));
     }
 }

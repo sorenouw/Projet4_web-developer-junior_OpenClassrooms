@@ -3,8 +3,7 @@
 session_start();
 require "Article.php";
 require "ArticleManager.php";
-require "Comment.php";
-require "CommentManager.php";
+
 // Récupération du post
  $articleManager = new ArticleManager();
   $id = $_GET['id'];

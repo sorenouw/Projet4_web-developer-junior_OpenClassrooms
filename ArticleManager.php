@@ -35,8 +35,8 @@ class ArticleManager extends Manager {
      'id'=> $article->id(),
 ));
    }
-   public function delete(){
-     $req= $this->getDb()->prepare("DELETE FROM comment WHERE id = :id");
+   public function delete(Article $article){
+     $req= $this->getDb()->prepare("DELETE FROM post WHERE id = :id");
      $req->execute(array(
              'id'=> $article->id(),
          ));
