@@ -28,7 +28,7 @@ require "CommentManager.php";
          'id'=> $id,
      ));
      $commentManager->editComment($comment);
-         header('Location: comment.php?id=' . $_GET['id']);
+         header('Location: commentView.php?id=' . $_GET['id']);
      }
  }
 

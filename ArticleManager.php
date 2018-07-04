@@ -28,10 +28,10 @@ class ArticleManager extends Manager {
    }
    return $getPost;
    }
-   public function editPost(){
+   public function editPost(Article $article){
      $req = $this->getDb()->prepare("UPDATE post SET content = :content WHERE id = :id");
      $req->execute(array(
-     'comment'=> $article->content(),
+     'content'=> $article->content(),
      'id'=> $article->id(),
 ));
    }
