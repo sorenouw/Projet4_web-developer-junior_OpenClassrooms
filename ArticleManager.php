@@ -18,9 +18,6 @@ class ArticleManager extends Manager {
      }
      return $articles;
    }
-   public function delete(){
-
-   }
    public function getPost(Article $article){
      $req = $this->getDb()->prepare("SELECT id, title, content, date_publish FROM post WHERE id = :id");
      $req->execute(array(
@@ -32,6 +29,16 @@ class ArticleManager extends Manager {
    return $getPost;
    }
    public function editPost(){
-
+     $req = $this->getDb()->prepare("UPDATE post SET content = :content WHERE id = :id");
+     $req->execute(array(
+     'comment'=> $article->content(),
+     'id'=> $article->id(),
+));
+   }
+   public function delete(){
+     $req= $this->getDb()->prepare("DELETE FROM comment WHERE id = :id");
+     $req->execute(array(
+             'id'=> $article->id(),
+         ));
    }
 }

@@ -37,7 +37,7 @@ if (isset($_POST['1']) && !empty($_POST)) {
     $commentManager->add($comment);
     }
 } elseif (isset($_POST['2'])) {
-  $id = $_GET['id'];
+  $id = $_GET['comment_id'];
   $commentManager = new CommentManager();
   $comment = new Comment(Array(
   'id'=> $id,
