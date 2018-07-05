@@ -1,21 +1,17 @@
 <?php
 session_start();
-if (!empty($_POST)) {
+require "User.php";
+require "UserManager.php";
+
+if (!empty($_POST['login']) && !empty($_POST['password'])) {
+    $userManager = new UserManager();
     $login = $_POST["login"];
     $password = $_POST["password"];
-
-    try {
-        $bdd = new PDO('mysql:host=localhost;dbname=blog', 'root');
-    } catch (\Exception $e) {
-        var_dump($e);
-    }
-    $req = $bdd->prepare("SELECT * FROM user WHERE name = :name AND password = :password");
-    $req->execute(array(
-
-  "name" => $login,
-  "password" => $password,
-));
-    $data = $req->fetch(PDO::FETCH_ASSOC);
+     $user = new User(Array(
+       'login' => $login,
+       'password' => $password,
+     ));
+     $data = $userManager->getUser($user);
     if ($data!=false) {
         $message = "Connexion réussie";
         $_SESSION["user"] = $login;

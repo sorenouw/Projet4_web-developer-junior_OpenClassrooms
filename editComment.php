@@ -40,12 +40,12 @@ require "CommentManager.php";
 <?php ob_start(); ?>
 <body>
 <?php foreach ($editComment as $comment): ?>
-
-<?php endforeach; ?>
   <form class="" action="editComment.php?id=<?= $_GET['id']?>&comment_id=<?= $comment->id() ?>" method="post">
     <textarea name="comment"><?php echo nl2br(htmlspecialchars($comment->comment())); ?></textarea>
     <input type="submit" name="2" />
   </form>
+<?php endforeach; ?>
+
 
 	<?php $content = ob_get_clean(); ?>
 
