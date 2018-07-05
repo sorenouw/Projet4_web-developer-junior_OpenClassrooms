@@ -10,18 +10,17 @@ $articles = $articleManager->getList();
 <?php $title = 'Mon blog'; ?>
 <?php ob_start(); ?>
     <?php include("nav.php"); ?>
-<section class="section_posts">
-  <?php foreach ($articles as $article): $content = substr($article->content(), 0, 150); ?>
+    <?php include("headerImg.php"); ?>
+<section class="index_posts">
+  <?php foreach ($articles as $article): $content = substr($article->content(), 0, 500); ?>
 
-    <div class="post">
+    <div class="index_post">
         <h3><?php echo htmlspecialchars($article->title()); ?></h3>
-        <p><?php echo htmlspecialchars($content . ".."); ?>
-        <br />
-        <em>Publié le<?php echo htmlspecialchars($article->date()); ?> </em>
-        <em><a href="commentView.php?id=<?php echo $article->id() ?>">Comments</a></em>
-        </p>
-    </div>
+        <em>Publié le <?php echo htmlspecialchars($article->date()); ?></em>
+        <p><?php echo htmlspecialchars($content . ".."); ?></p>
+        <p><a href="commentView.php?id=<?php echo $article->id() ?>">Lire ce chapitre</a></p>
 
+    </div>
   <?php endforeach; ?>
 
 </section>

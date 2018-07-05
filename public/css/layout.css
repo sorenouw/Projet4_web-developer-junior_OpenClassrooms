@@ -1,54 +1,108 @@
 /*----- Header -----*/
-header{
+
+header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 90%;
+  padding: 3px 10px 3px 10px;
+  height: 40px;
 }
-.admin{
-  display: flex;
-}
-.post{
+
+.post {
   margin: auto;
 }
-.comment{
+
+.comment {
   margin: 5px;
   padding: 5px;
   border: 1px;
   border-style: solid;
-  border-color: red;
+  border-color: #0093B7;
 }
-.comment_button{
+
+.comment_button {
   display: flex;
   justify-content: center;
+}
 
-}
-.news {
-  background-color: white;
-  padding: 20px;
-  margin-top: 20px;
-}
-table{
+table {
   margin: auto;
 }
-.admin{
+
+.admin {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 90%;
+}
+
+/*----- header img -----*/
+
+.headerImg {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  border-top: 2px solid #0093B7;
+  border-bottom: 2px solid #0093B7;
+  margin-bottom: 30px;
+}
+
+.imgTitle {
+  font-size: 50px;
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 /*----- Posts -----*/
-.section_posts{
+
+.index_posts {
   display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 95%;
-    margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 90%;
+  margin: 0 auto;
 }
-.post{
-    overflow: hidden;
-    height: 300px;
-    width: 200px;
-    margin: 10px;
+
+.index_post {
+  border: 2px solid #0093B7;
+  border-radius: 5px;
+  padding: 5px;
+  overflow: hidden;
+  height: auto;
+  width: 350px;
+  margin: 10px;
+  text-align: left;
+}
+
+/*----- Post and Comment -----*/
+
+.right {
+  position: absolute;
+  right: 10px;
+}
+
+.post_view {
+  max-width: 80%;
+  margin: auto;
+  text-align: left;
+}
+
+@media screen and (max-width: 780px) {
+  h1 {
+    font-size: 20px;
+  }
+  header {
+    margin: 0;
+  }
+  .imgTitle {
+    font-size: 25px;
+    top: 30%;
+  }
 }

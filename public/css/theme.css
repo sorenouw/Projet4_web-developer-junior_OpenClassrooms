@@ -1,21 +1,36 @@
-a,button {
-  font-size: 8px;
-  color: #858c96 !important;
-  text-transform: uppercase;
+/*----- Button / Link -----*/
+
+a, button {
+  color: white;
+  background-color: #0093B7;
+  padding: 6px 10px;
+  margin: 1px;
+  border-radius: 3px;
+  border: 0px;
+  ;
   text-decoration: none;
-  background: #ffffff;
-  padding: 10px;
-  border: 1px solid #858c96 !important;
-  border-radius: 6px;
-  display: inline-block;
+  font-size: 16px;
 }
-a:hover, button:hover {
-  color: #06517c !important;
-  border-radius: 50px;
-  border-color: #06517c !important;
-  transition: all 0.3s ease 0s;
+
+a:hover, button:hover {}
+
+/*----- Admin Table -----*/
+
+table {
+  border: 2px solid #0093B7;
 }
-table{
-  border-style: solid;
-  border-color: red;
+
+header {
+  background-color: #003340;
+  color: white;
+}
+
+body {
+  background-color: #2A2B2B;
+  color: white;
+}
+
+h3 {
+  font-size: 30px;
+  color: #0093B7;
 }

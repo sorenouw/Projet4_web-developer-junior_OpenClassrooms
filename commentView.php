@@ -8,9 +8,9 @@ require "CommentManager.php";
 
 
 // Récupération du billet
-	$articleManager = new ArticleManager();
+    $articleManager = new ArticleManager();
   $id = $_GET['id'];
-  $article = new Article(Array(
+  $article = new Article(array(
       'id'=>$id,
   ));
   $post = $articleManager->getPost($article);
@@ -28,21 +28,21 @@ if (isset($_POST['1']) && !empty($_POST)) {
         $validation = false;
     }
     if ($validation === true) {
-      $commentManager = new CommentManager();
-      $comment = new Comment(Array(
+        $commentManager = new CommentManager();
+        $comment = new Comment(array(
       'login'=> $auteur,
       'comment'=> $commentaire,
       'postId'=> $postId,
     ));
-    $commentManager->add($comment);
+        $commentManager->add($comment);
     }
 } elseif (isset($_POST['2'])) {
-  $id = $_GET['comment_id'];
-  $commentManager = new CommentManager();
-  $comment = new Comment(Array(
+    $id = $_GET['comment_id'];
+    $commentManager = new CommentManager();
+    $comment = new Comment(array(
   'id'=> $id,
 ));
-$commentManager->report($comment);
+    $commentManager->report($comment);
 } elseif (isset($_POST['5'])) {
     $id = $_GET['comment_id'];
     $commentManager = new CommentManager();
@@ -55,7 +55,7 @@ $commentManager->report($comment);
 // récupération des Commentaires
 $commentManager = new CommentManager();
 $postId = $_GET['id'];
-$comment = new Comment(Array(
+$comment = new Comment(array(
     'postId'=>$postId,
 ));
 $comments = $commentManager->getList($comment);
@@ -67,23 +67,18 @@ $comments = $commentManager->getList($comment);
   <?php $title = 'Mon blog'; ?>
   <?php ob_start(); ?>
   <?php include("nav.php"); ?>
-
-
-  <h2>Mon super blog !</h2> <a href="index.php">Retour à la liste des post</a>
-
+  <?php include("headerImg.php"); ?>
+<p><a class="right" href="index.php">Retour à l'accueil'</a></p>
 
 <?php foreach ($post as $post): ?>
-  <article class="news">
-    <h3>
-        <?php echo htmlspecialchars($post->title()); ?>
-        <em>le <?php echo $post->date(); ?></em>
-    </h3>
-
+  <article class="post_view">
+    <h3><?php echo htmlspecialchars($post->title()); ?></h3>
     <p>
       <?php
     echo nl2br(htmlspecialchars($post->content()));
     ?>
     </p>
+		<em>le <?php echo $post->date(); ?></em>
   </article>
 <?php endforeach; ?>
 
@@ -100,13 +95,13 @@ $comments = $commentManager->getList($comment);
     </div>
     <div class="comment_button">
         <?php if (!empty($_SESSION["user"])) {
-          ?>
+        ?>
         <a href="editComment.php?id=<?= $_GET['id']?>&comment_id=<?= $comment->id(); ?>"> modifier</a>
-				<form class="" action=commentView.php?id=<?php echo $post->id(); ?>&comment_id=<?= $comment->id();?> method="post">
+				<form class="" action=commentView.php?id=<?php echo $post->id(); ?>&comment_id=<?= $comment->id(); ?> method="post">
 					<button type="submit" name="5">Supprimer</button>
 				</form>
         <?php
-      } ?>
+    } ?>
           <form class="" action=commentView.php?id=<?= $_GET[ 'id']; ?>&comment_id=<?= $comment->id();?> method="post">
             <button type="submit" name="2">Signaler !</button>
           </form>
