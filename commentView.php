@@ -43,6 +43,13 @@ if (isset($_POST['1']) && !empty($_POST)) {
   'id'=> $id,
 ));
 $commentManager->report($comment);
+} elseif (isset($_POST['5'])) {
+    $id = $_GET['comment_id'];
+    $commentManager = new CommentManager();
+    $comment = new Comment(array(
+  'id'=> $id,
+));
+    $commentManager->delete($comment);
 }
 
 // récupération des Commentaires
@@ -95,6 +102,9 @@ $comments = $commentManager->getList($comment);
         <?php if (!empty($_SESSION["user"])) {
           ?>
         <a href="editComment.php?id=<?= $_GET['id']?>&comment_id=<?= $comment->id(); ?>"> modifier</a>
+				<form class="" action=commentView.php?id=<?php echo $post->id(); ?>&comment_id=<?= $comment->id();?> method="post">
+					<button type="submit" name="5">Supprimer</button>
+				</form>
         <?php
       } ?>
           <form class="" action=commentView.php?id=<?= $_GET[ 'id']; ?>&comment_id=<?= $comment->id();?> method="post">
