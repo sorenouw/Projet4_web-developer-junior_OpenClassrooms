@@ -11,11 +11,11 @@ a,button {
 }
 a:hover, button:hover {
   color: #06517c !important;
-border-radius: 50px;
-border-color: #06517c !important;
-transition: all 0.3s ease 0s;
+  border-radius: 50px;
+  border-color: #06517c !important;
+  transition: all 0.3s ease 0s;
 }
 table{
   border-style: solid;
-border-color: red;
+  border-color: red;
 }

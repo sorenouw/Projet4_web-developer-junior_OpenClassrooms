@@ -37,3 +37,18 @@ table{
   justify-content: space-between;
   max-width: 90%;
 }
+
+/*----- Posts -----*/
+.section_posts{
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 95%;
+    margin: 0 auto;
+}
+.post{
+    overflow: hidden;
+    height: 300px;
+    width: 200px;
+    margin: 10px;
+}
