@@ -51,7 +51,7 @@ $postId = $_GET['id'];
 $comment = new Comment(Array(
     'postId'=>$postId,
 ));
-$commentFinal = $commentManager->getList($comment);
+$comments = $commentManager->getList($comment);
 
 ?>
 
@@ -82,7 +82,7 @@ $commentFinal = $commentManager->getList($comment);
 
 
   <h2>Commentaires</h2>
-<?php foreach ($commentFinal as $comment): ?>
+<?php foreach ($comments as $comment): ?>
   <div class="comment">
     <div class="comment_content">
       <p><strong><?php echo htmlspecialchars($comment->login()); ?></strong> le

@@ -51,6 +51,7 @@ $getReported = $commentManager->getReported();
 	<p><a href="index.php">Retourner sur l'accueil</a></p>
 	<a href="post.php">poster</a>
 </header>
+
 <div class="admin">
 	<section class="post">
 		<table>
@@ -77,15 +78,12 @@ $getReported = $commentManager->getReported();
 
 	<section class="comment">
 <?php foreach ($getReported as $comment): ?>
-  <p><strong><?php echo htmlspecialchars($comment->login()); ?></strong> le <?php echo $comment->date(); ?>
-
+    <p><strong><?php echo htmlspecialchars($comment->login()); ?></strong> le <?php echo $comment->date(); ?>
     <p><?php echo nl2br(htmlspecialchars($comment->comment())); ?></p>
     <form class="" action=admin.php?id=<?php echo $comment->id(); ?> method="post">
       <button type="submit" name="5">Supprimer</button>
     </form>
 <?php endforeach; ?>
-
-
 	</section>
 </div>
 
