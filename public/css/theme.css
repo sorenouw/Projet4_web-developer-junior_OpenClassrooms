@@ -14,11 +14,10 @@ a, button {
 
 a:hover, button:hover {}
 
+
 /*----- Admin Table -----*/
 
-table {
-  border: 2px solid #0093B7;
-}
+
 
 header {
   background-color: #003340;

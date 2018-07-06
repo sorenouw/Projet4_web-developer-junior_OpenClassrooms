@@ -24,7 +24,7 @@ if (isset($_POST['4'])) {
     var_dump('Supprimé');
 // delete comment
 } elseif (isset($_POST['5'])) {
-    $id = $_GET['comment_id'];
+    $id = $_GET['id'];
     $commentManager = new CommentManager();
     $comment = new Comment(array(
   'id'=> $id,
@@ -52,8 +52,9 @@ $getReported = $commentManager->getReported();
 	<a href="post.php">poster</a>
 </header>
 
-<div class="admin">
-	<section class="post">
+<div class="admin_page">
+	<section class="admin_post">
+    <h2>Liste des articles</h2>
 		<table>
 <?php foreach ($articles as $post): ?>
   <tr>
@@ -76,14 +77,22 @@ $getReported = $commentManager->getReported();
 		</table>
 	</section>
 
-	<section class="comment">
-<?php foreach ($getReported as $comment): ?>
-    <p><strong><?php echo htmlspecialchars($comment->login()); ?></strong> le <?php echo $comment->date(); ?>
-    <p><?php echo nl2br(htmlspecialchars($comment->comment())); ?></p>
-    <form class="" action=admin.php?id=<?php echo $comment->id(); ?> method="post">
-      <button type="submit" name="5">Supprimer</button>
-    </form>
-<?php endforeach; ?>
+	<section class="admin_comment">
+    <h2>Liste des commentaires signalés</h2>
+    <table>
+      <?php foreach ($getReported as $comment): ?>
+        <tr>
+          <td><p><strong><?php echo htmlspecialchars($comment->login()); ?></strong> le <?php echo $comment->date(); ?><p/></td>
+<td><p><?php echo nl2br(htmlspecialchars($comment->comment())); ?></p></td>
+<td>          <form class="" action=admin.php?id=<?php echo $comment->id(); ?> method="post">
+            <button type="submit" name="5">Supprimer</button>
+          </form></td>
+
+        </tr>
+
+      <?php endforeach; ?>
+    </table>
+
 	</section>
 </div>
 
