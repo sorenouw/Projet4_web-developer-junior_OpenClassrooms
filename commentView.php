@@ -83,7 +83,7 @@ $comments = $commentManager->getList($comment);
 <?php endforeach; ?>
 
 
-  <h2>Commentaires</h2>
+  <h3>Commentaires</h3>
 <?php foreach ($comments as $comment): ?>
   <div class="comment">
     <div class="comment_content">
@@ -119,7 +119,7 @@ $comments = $commentManager->getList($comment);
         <textarea id="comment" name="comment"></textarea>
       </div>
       <div>
-        <input type="submit" name="1" />
+        <button type="button" name="1">Commenter</button>
       </div>
     </form>
     <?php $content = ob_get_clean(); ?>

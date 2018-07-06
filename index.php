@@ -7,7 +7,7 @@ $articles = $articleManager->getList();
 
 ?>
 
-<?php $title = 'Mon blog'; ?>
+<?php $title = 'Jean Forteroche'; ?>
 <?php ob_start(); ?>
     <?php include("nav.php"); ?>
     <?php include("headerImg.php"); ?>

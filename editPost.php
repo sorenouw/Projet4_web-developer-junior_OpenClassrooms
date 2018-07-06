@@ -36,11 +36,12 @@ require "ArticleManager.php";
 
 <?php ob_start(); ?>
 <body>
+  <h2>Modifier cet article.</h2>
 <?php foreach ($editPost as $post): ?>
   <form class="" action="editPost.php?id=<?= $post->id(); ?>" method="post">
     <p><?php echo nl2br(htmlspecialchars($post->title())); ?></p>
-    <textarea name="post"><?php echo nl2br(htmlspecialchars($post->content())); ?></textarea>
-    <input type="submit" name="3" />
+    <textarea cols="50" rows="10" name="post"><?php echo nl2br(htmlspecialchars($post->content())); ?></textarea>
+    <button type="submit" name="3">Modifier !</button>
   </form>
 <?php endforeach; ?>
 
