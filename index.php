@@ -1,33 +1,36 @@
 <?php
 session_start();
-require "Article.php";
-require "ArticleManager.php";
-$articleManager = new ArticleManager();
-$articles = $articleManager->getList();
+require "model/Database.php";
+require "model/Manager.php";
+require "model/Article.php";
+require "model/ArticleManager.php";
+require "model/Comment.php";
+require "model/CommentManager.php";
+require "model/User.php";
+require "model/UserManager.php";
+// Controller
+require "controller/BackController.php";
+require "controller/FrontController.php";
 
-?>
-
-<?php $title = 'Jean Forteroche'; ?>
-<?php ob_start(); ?>
-    <?php include("nav.php"); ?>
-    <?php include("headerImg.php"); ?>
-<section class="index_posts">
-  <?php foreach ($articles as $article): $content = substr($article->content(), 0, 500); ?>
-
-    <div class="index_post">
-        <h3><?php echo htmlspecialchars($article->title()); ?></h3>
-        <em>Publié le <?php echo htmlspecialchars($article->date()); ?></em>
-        <p><?php echo htmlspecialchars($content . ".."); ?></p>
-        <p><a href="commentView.php?id=<?php echo $article->id() ?>">Lire ce chapitre</a></p>
-
-    </div>
-  <?php endforeach; ?>
-
-</section>
+  $frontController = new FrontController();
 
 
-
-
-
-		<?php $content = ob_get_clean(); ?>
-<?php require('template.php'); ?>
+if (empty($_SERVER["QUERY_STRING"])){
+  $frontController->home();
+}
+elseif (isset($_GET['action'])) {
+    if ($_GET['action'] == 'commentView') {
+        $frontController->commentView();
+    }
+    elseif ($_GET['action'] == 'post') {
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+            post();
+        }
+        else {
+            echo 'Erreur : aucun identifiant de billet envoyé';
+        }
+    }
+}
+else {
+    listPosts();
+}

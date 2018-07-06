@@ -1,73 +1,8 @@
-<?php
-session_start();
-// Connexion à la base de données
-require "Article.php";
-require "ArticleManager.php";
-require "Comment.php";
-require "CommentManager.php";
-
-
-// Récupération du billet
-    $articleManager = new ArticleManager();
-  $id = $_GET['id'];
-  $article = new Article(array(
-      'id'=>$id,
-  ));
-  $post = $articleManager->getPost($article);
-
-
-
-
-// post de commentaire
-if (isset($_POST['1']) && !empty($_POST)) {
-    $auteur = $_POST['author'];
-    $commentaire = $_POST['comment'];
-    $postId = $_GET['id'];
-    $validation = true;
-    if (empty($auteur) && empty($commentaire)) {
-        $validation = false;
-    }
-    if ($validation === true) {
-        $commentManager = new CommentManager();
-        $comment = new Comment(array(
-      'login'=> $auteur,
-      'comment'=> $commentaire,
-      'postId'=> $postId,
-    ));
-        $commentManager->add($comment);
-    }
-} elseif (isset($_POST['2'])) {
-    $id = $_GET['comment_id'];
-    $commentManager = new CommentManager();
-    $comment = new Comment(array(
-  'id'=> $id,
-));
-    $commentManager->report($comment);
-} elseif (isset($_POST['5'])) {
-    $id = $_GET['comment_id'];
-    $commentManager = new CommentManager();
-    $comment = new Comment(array(
-  'id'=> $id,
-));
-    $commentManager->delete($comment);
-}
-
-// récupération des Commentaires
-$commentManager = new CommentManager();
-$postId = $_GET['id'];
-$comment = new Comment(array(
-    'postId'=>$postId,
-));
-$comments = $commentManager->getList($comment);
-
-?>
-
-
 
   <?php $title = 'Mon blog'; ?>
   <?php ob_start(); ?>
-  <?php include("nav.php"); ?>
-  <?php include("headerImg.php"); ?>
+  <?php include("view/frontend/nav.php"); ?>
+  <?php include("view/frontend/headerImg.php"); ?>
 <p><a class="right" href="index.php">Retour à l'accueil'</a></p>
 
 <?php foreach ($post as $post): ?>
@@ -119,9 +54,9 @@ $comments = $commentManager->getList($comment);
         <textarea id="comment" name="comment"></textarea>
       </div>
       <div>
-        <button type="button" name="1">Commenter</button>
+        <button type="submit" name="1">Commenter</button>
       </div>
     </form>
     <?php $content = ob_get_clean(); ?>
 
-    <?php require('template.php'); ?>
+    <?php require('view/frontend/template.php'); ?>

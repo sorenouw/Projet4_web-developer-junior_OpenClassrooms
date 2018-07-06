@@ -21,7 +21,6 @@ if (isset($_POST['4'])) {
   'postId'=> $id,
 ));
     $commentManager->deleteAll($comment);
-    var_dump('Supprimé');
 // delete comment
 } elseif (isset($_POST['5'])) {
     $id = $_GET['id'];
