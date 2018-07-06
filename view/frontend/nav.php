@@ -7,7 +7,7 @@
   	<?php
 } else {
         ?>
-      <form class="" action="login.php" method="get">
+      <form class="" action="index.php?action=login" method="get">
         <button type="submit" name="button" class="">Se connecter</button>
       </form>
   <?php

@@ -22,13 +22,8 @@ elseif (isset($_GET['action'])) {
     if ($_GET['action'] == 'commentView') {
         $frontController->commentView();
     }
-    elseif ($_GET['action'] == 'post') {
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-            post();
-        }
-        else {
-            echo 'Erreur : aucun identifiant de billet envoyé';
-        }
+    elseif ($_GET['action'] == 'login') {
+      $frontController->login();
     }
 }
 else {

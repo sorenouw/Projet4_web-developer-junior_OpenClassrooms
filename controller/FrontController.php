@@ -58,4 +58,24 @@ class FrontController{
 
     require ('view/frontend/commentView.php');
   }
+  public function login(){
+    if (!empty($_POST['login']) && !empty($_POST['password'])) {
+        $userManager = new UserManager();
+        $login = $_POST["login"];
+        $password = $_POST["password"];
+         $user = new User(Array(
+           'login' => $login,
+           'password' => $password,
+         ));
+         $data = $userManager->getUser($user);
+        if ($data!=false) {
+            $message = "Connexion réussie";
+            $_SESSION["user"] = $login;
+            header("location:admin.php");
+        } else {
+            $message = "Échec";
+        }
+    }
+    require ('view/frontend/login.php');
+  }
 }
