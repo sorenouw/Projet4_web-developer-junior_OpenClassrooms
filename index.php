@@ -29,6 +29,15 @@ elseif (isset($_GET['action'])) {
     elseif ($_GET['action'] == 'admin') {
       $backController->admin();
     }
+    elseif ($_GET['action'] == 'editPost') {
+      $backController->editPost();
+    }
+    elseif ($_GET['action'] == 'editComment') {
+      $backController->editComment();
+    }
+    elseif ($_GET['action'] == 'newPost') {
+      $backController->newPost();
+    }
 }
 else {
     listPosts();

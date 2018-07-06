@@ -5,7 +5,7 @@
 <header class="admin">
 	<p><?php echo 'Bienvenue ' . $_SESSION["user"]?></p>
 	<p><a href="index.php">Retourner sur l'accueil</a></p>
-	<a href="index.php?action=post">poster</a>
+	<a href="index.php?action=newPost">poster</a>
 </header>
 
 <div class="admin_page">

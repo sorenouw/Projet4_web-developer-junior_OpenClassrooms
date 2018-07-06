@@ -31,20 +31,20 @@
     <div class="comment_button">
         <?php if (!empty($_SESSION["user"])) {
         ?>
-        <a href="editComment.php?id=<?= $_GET['id']?>&comment_id=<?= $comment->id(); ?>"> modifier</a>
-				<form class="" action=commentView.php?id=<?php echo $post->id(); ?>&comment_id=<?= $comment->id(); ?> method="post">
+        <a href="index.php?action=editComment&id=<?= $_GET['id']?>&comment_id=<?= $comment->id(); ?>"> modifier</a>
+				<form class="" action="index.php?action=commentView&id=<?php echo $post->id(); ?>&comment_id=<?= $comment->id(); ?>" method="post">
 					<button type="submit" name="5">Supprimer</button>
 				</form>
         <?php
     } ?>
-          <form class="" action=commentView.php?id=<?= $_GET[ 'id']; ?>&comment_id=<?= $comment->id();?> method="post">
+          <form class="" action="index.php?action=commentView&id=<?= $_GET[ 'id']; ?>&comment_id=<?= $comment->id();?>" method="post">
             <button type="submit" name="2">Signaler !</button>
           </form>
     </div>
   </div>
 <?php endforeach; ?>
 
-    <form action="commentView.php?id=<?= $_GET['id']  ?>" method="post">
+    <form action="index.php?action=commentView&id=<?= $_GET['id']  ?>" method="post">
       <div>
         <label for="author">Auteur</label><br />
         <input type="text" id="author" name="author" />
