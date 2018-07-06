@@ -13,6 +13,7 @@ require "controller/BackController.php";
 require "controller/FrontController.php";
 
   $frontController = new FrontController();
+  $backController = new BackController();
 
 
 if (empty($_SERVER["QUERY_STRING"])){
@@ -24,6 +25,9 @@ elseif (isset($_GET['action'])) {
     }
     elseif ($_GET['action'] == 'login') {
       $frontController->login();
+    }
+    elseif ($_GET['action'] == 'admin') {
+      $backController->admin();
     }
 }
 else {

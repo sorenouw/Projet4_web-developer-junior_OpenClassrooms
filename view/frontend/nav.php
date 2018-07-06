@@ -3,11 +3,11 @@
 <nav>
   <?php if (!empty($_SESSION["user"])) {
     ?>
-    <em><a href="admin.php">Interface d'administration</a></em>
+    <em><a href="index.php?action=admin">Interface d'administration</a></em>
   	<?php
 } else {
         ?>
-      <form class="" action="index.php?action=login" method="get">
+      <form class="" action="index.php?action=login" method="post">
         <button type="submit" name="button" class="">Se connecter</button>
       </form>
   <?php

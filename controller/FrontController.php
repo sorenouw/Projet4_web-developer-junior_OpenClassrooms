@@ -71,7 +71,7 @@ class FrontController{
         if ($data!=false) {
             $message = "Connexion réussie";
             $_SESSION["user"] = $login;
-            header("location:admin.php");
+            header("location:index.php?action=admin");
         } else {
             $message = "Échec";
         }
