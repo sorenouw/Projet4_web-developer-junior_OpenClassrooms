@@ -10,6 +10,7 @@
         <link href="public/css/theme.css" rel="stylesheet" />
         <link href='https://fonts.googleapis.com/css?family=Old Standard TT' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+        <link rel="icon" type="image/png" href="public/img/favicon.png" />
         <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
         <script>tinymce.init({ selector:'.editor' });</script>
     </head>

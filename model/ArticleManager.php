@@ -18,7 +18,7 @@ class ArticleManager extends Manager {
      return $articles;
    }
    public function getPost(Article $article){
-     $req = $this->getDb()->prepare("SELECT id, title, content, date_publish FROM post WHERE id = :id");
+     $req = $this->getDb()->prepare("SELECT id, title, content, DATE_FORMAT(date_publish, '%d/%m/%Y à %Hh%imin%ss') AS date_publish FROM post WHERE id = :id");
      $req->execute(array(
        'id'=> $article->id(),
    ));
