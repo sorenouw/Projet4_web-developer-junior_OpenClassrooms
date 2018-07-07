@@ -1,23 +1,18 @@
-/*----- Button / Link -----*/
-
 a, button {
   color: white;
   background-color: #0093B7;
   padding: 6px 10px;
   margin: 1px;
   border-radius: 3px;
-  border: 0px;
-  ;
   text-decoration: none;
   font-size: 16px;
+  border: 0px;
+  font-family: 'Old Standard TT';
 }
 
-a:hover, button:hover {}
-
-
-/*----- Admin Table -----*/
-
-
+h3 {
+  color: #0093B7;
+}
 
 header {
   background-color: #003340;
@@ -27,9 +22,4 @@ header {
 body {
   background-color: #2A2B2B;
   color: white;
-}
-
-h3 {
-  font-size: 30px;
-  color: #0093B7;
 }

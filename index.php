@@ -38,6 +38,12 @@ elseif (isset($_GET['action'])) {
     elseif ($_GET['action'] == 'newPost') {
       $backController->newPost();
     }
+    elseif ($_GET['action'] == 'deletePost') {
+      $backController->deletePost();
+    }
+    elseif ($_GET['action'] == 'deleteComment') {
+      $backController->deleteComment();
+    }
 }
 else {
     listPosts();

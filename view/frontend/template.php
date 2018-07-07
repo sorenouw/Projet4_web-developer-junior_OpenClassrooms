@@ -8,7 +8,10 @@
         <link href="public/css/base.css" rel="stylesheet" />
         <link href="public/css/layout.css" rel="stylesheet" />
         <link href="public/css/theme.css" rel="stylesheet" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Futura">
+        <link href='https://fonts.googleapis.com/css?family=Old Standard TT' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+        <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+        <script>tinymce.init({ selector:'.editor' });</script>
     </head>
 
     <body>

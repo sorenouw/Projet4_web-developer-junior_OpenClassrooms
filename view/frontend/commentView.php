@@ -3,14 +3,14 @@
   <?php ob_start(); ?>
   <?php include("view/frontend/nav.php"); ?>
   <?php include("view/frontend/headerImg.php"); ?>
-<p><a class="right" href="index.php">Retour à l'accueil'</a></p>
+<p><a class="right" href="index.php">Accueil</a></p>
 
 <?php foreach ($post as $post): ?>
   <article class="post_view">
-    <h3><?php echo htmlspecialchars($post->title()); ?></h3>
+    <h3><?php echo $post->title(); ?></h3>
     <p>
       <?php
-    echo nl2br(htmlspecialchars($post->content()));
+    echo $post->content();
     ?>
     </p>
 		<em>le <?php echo $post->date(); ?></em>
@@ -38,7 +38,7 @@
         <?php
     } ?>
           <form class="" action="index.php?action=commentView&id=<?= $_GET[ 'id']; ?>&comment_id=<?= $comment->id();?>" method="post">
-            <button type="submit" name="2">Signaler !</button>
+            <button type="submit" name="2">Signaler</button>
           </form>
     </div>
   </div>

@@ -10,7 +10,7 @@
     <div class="index_post">
         <h3><?php echo htmlspecialchars($article->title()); ?></h3>
         <em>Publié le <?php echo htmlspecialchars($article->date()); ?></em>
-        <p><?php echo htmlspecialchars($content . ".."); ?></p>
+        <p><?php echo $content . ".."; ?></p>
         <p><a href="index.php?action=commentView&id=<?php echo $article->id() ?>">Lire ce chapitre</a></p>
 
     </div>

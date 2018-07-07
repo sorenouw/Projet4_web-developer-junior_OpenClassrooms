@@ -8,10 +8,6 @@ header {
   height: 40px;
 }
 
-
-
-
-
 /*----- header img -----*/
 
 .headerImg {
@@ -70,6 +66,7 @@ header {
   margin: auto;
   text-align: justify;
 }
+
 .comment {
   margin: auto;
   padding: 5px;
@@ -81,10 +78,15 @@ header {
   display: flex;
   justify-content: center;
 }
+textarea{
+  max-width: 80%;
+}
 /*----- admin -----*/
-table{
+
+table {
   border-collapse: collapse;
 }
+
 td {
   border: 2px solid #0093B7;
 }
@@ -94,21 +96,24 @@ td {
   justify-content: space-between;
   align-items: center;
 }
-.admin_page{
+
+.admin_page {
   margin: auto;
   max-width: 90%;
   padding-top: 20px;
   display: flex;
-  align-items:flex-start;
+  align-items: flex-start;
   flex-wrap: wrap;
 }
+
 .admin_post {
-  align-items:flex-start;
+  align-items: flex-start;
   margin: auto;
   margin-top: 0;
   height: auto;
   max-width: 500px;
 }
+
 .admin_comment {
   max-width: 500px;
   height: auto;
@@ -116,7 +121,8 @@ td {
   margin: auto;
   margin-top: 0;
 }
-@media screen and (max-width: 780px) {
+
+@media all and (max-width: 780px) {
   h1 {
     font-size: 20px;
   }
@@ -126,5 +132,9 @@ td {
   .imgTitle {
     font-size: 25px;
     top: 30%;
+  }
+  h3 {
+    font-size: 12px;
+    color: white;
   }
 }

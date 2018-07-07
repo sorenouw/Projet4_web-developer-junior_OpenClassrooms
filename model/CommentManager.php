@@ -15,7 +15,7 @@ class CommentManager extends Manager
     public function getList(Comment $comment)
     {
         $commentaires = [];
-        $req = $this->getDb()->prepare("SELECT * FROM comment WHERE post_id = :post_id  ORDER BY date_publish DESC LIMIT 0, 5");
+        $req = $this->getDb()->prepare("SELECT id, login, comment, post_id, DATE_FORMAT(date_publish, '%d/%m/%Y à %Hh%imin%ss') AS date_publish FROM comment WHERE post_id = :post_id  ORDER BY date_publish DESC LIMIT 0, 5");
         $req->execute(array(
        'post_id'=> $comment->postId(),
    ));

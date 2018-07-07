@@ -6,7 +6,7 @@
 <?php foreach ($editPost as $post): ?>
   <form class="" action="index.php?action=editPost&id=<?= $post->id(); ?>" method="post">
     <p><?php echo nl2br(htmlspecialchars($post->title())); ?></p>
-    <textarea cols="50" rows="10" name="post"><?php echo nl2br(htmlspecialchars($post->content())); ?></textarea>
+    <textarea class="editor" cols="50" rows="10" name="post"><?php echo nl2br(htmlspecialchars($post->content())); ?></textarea>
     <button type="submit" name="3">Modifier !</button>
   </form>
 <?php endforeach; ?>

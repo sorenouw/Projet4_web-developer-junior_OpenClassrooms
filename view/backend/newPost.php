@@ -12,7 +12,7 @@
   </div>
   <div>
       <label for="content">Contenu</label> <br />
-      <textarea id="content" name="content" rows="10" cols="80"></textarea>
+      <textarea class="editor" id="content" name="content" rows="10" cols="80"></textarea>
   </div>
     <div>
         <input type="submit" name="5" />

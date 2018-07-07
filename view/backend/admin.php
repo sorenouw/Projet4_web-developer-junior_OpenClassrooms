@@ -4,7 +4,7 @@
 
 <header class="admin">
 	<p><?php echo 'Bienvenue ' . $_SESSION["user"]?></p>
-	<p><a href="index.php">Retourner sur l'accueil</a></p>
+	<p><a href="index.php">Accueil</a></p>
 	<a href="index.php?action=newPost">poster</a>
 </header>
 
@@ -15,7 +15,7 @@
 <?php foreach ($articles as $post): ?>
   <tr>
     <td>
-      <h3><?php echo htmlspecialchars($post->title()); ?></h3>
+      <h4><?php echo htmlspecialchars($post->title()); ?></h4>
     </td>
     <td>
       <a href="index.php?action=editPost&id=<?php echo $post->id(); ?>">Éditer</a>
@@ -24,9 +24,7 @@
       <a href="index.php?action=commentView&id=<?php echo $post->id(); ?>">Lire</a>
     </td>
     <td>
-      <form class="" action="index.php?action=delete&id=<?php echo $post->id(); ?>" method="post">
-        <button type="submit" name="4">Supprimer</button>
-      </form>
+			<a href="index.php?action=deletePost&id=<?php echo $post->id(); ?>">Supprimer</a>
     </td>
   </tr>
 <?php endforeach; ?>
@@ -40,9 +38,9 @@
         <tr>
           <td><p><strong><?php echo htmlspecialchars($comment->login()); ?></strong> le <?php echo $comment->date(); ?><p/></td>
 <td><p><?php echo nl2br(htmlspecialchars($comment->comment())); ?></p></td>
-<td>          <form class="" action="index.php?action=admin&id=<?php echo $comment->id(); ?>" method="post">
-            <button type="submit" name="5">Supprimer</button>
-          </form></td>
+<td>
+	<a href="index.php?action=deleteComment&id=<?php echo $comment->id(); ?>">Supprimer</a>
+</td>
 
         </tr>
 

@@ -3,7 +3,7 @@
 <nav>
   <?php if (!empty($_SESSION["user"])) {
     ?>
-    <em><a href="index.php?action=admin">Interface d'administration</a></em>
+    <em><a href="index.php?action=admin">Administration</a></em>
   	<?php
 } else {
         ?>
