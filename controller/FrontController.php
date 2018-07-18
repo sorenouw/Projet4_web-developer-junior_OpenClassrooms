@@ -79,8 +79,10 @@ class FrontController{
             $_SESSION["user"] = $login;
             header("location:index.php?action=admin");
         } else {
-            $message = "Échec";
+            $message = "Le nom d'utilisateur ou le mot de passe est érroné";
         }
+    } elseif(!empty($_POST['login']) || !empty($_POST['password'])) {
+      $message = "Le nom d'utilisateur ou le mot de passe est érroné";
     }
     require ('view/frontend/login.php');
   }

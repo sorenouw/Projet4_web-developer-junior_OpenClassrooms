@@ -9,7 +9,9 @@ a, button {
   border: 0px;
   font-family: 'Old Standard TT';
 }
-
+button{
+  cursor: pointer;
+}
 h3 {
   color: #0093B7;
 }
