@@ -90,7 +90,10 @@ table {
 td {
   border: 2px solid #0093B7;
 }
-
+.center{
+  align-items: center;
+  padding-top: 10px;
+}
 .admin {
   display: flex;
   justify-content: space-between;

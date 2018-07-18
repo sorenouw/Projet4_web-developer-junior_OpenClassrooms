@@ -87,7 +87,13 @@ class FrontController{
     }
     require ('view/frontend/login.php');
   }
+
   public function errorPage(){
     require('view/frontend/errorPage.php');
+  }
+
+  public function disconnect(){
+    session_destroy();
+    header("location:index.php");
   }
 }

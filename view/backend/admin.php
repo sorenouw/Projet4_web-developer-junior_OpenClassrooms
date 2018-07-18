@@ -4,10 +4,11 @@
 
 <header class="admin">
 	<p><?php echo 'Bienvenue ' . $_SESSION["user"]?></p>
-	<p><a href="index.php">Accueil</a></p>
-	<a href="index.php?action=newPost">poster</a>
+	<a href="index.php">Accueil</a>
+	<a href="index.php?action=disconnect">déconnection</a>
 </header>
 
+<p class="center"><a href="index.php?action=newPost">Rédiger un chapitre.</a></p>
 <div class="admin_page">
 	<section class="admin_post">
     <h2>Liste des articles</h2>

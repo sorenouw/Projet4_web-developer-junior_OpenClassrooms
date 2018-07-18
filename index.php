@@ -26,6 +26,9 @@ elseif (isset($_GET['action'])) {
     elseif ($_GET['action'] == 'login') {
       $frontController->login();
     }
+    elseif ($_GET['action'] == 'disconnect') {
+      $frontController->disconnect();
+    }
     elseif ($_GET['action'] == 'admin') {
       $backController->admin();
     }
