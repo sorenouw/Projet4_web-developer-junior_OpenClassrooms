@@ -9,13 +9,22 @@ a, button {
   border: 0px;
   font-family: 'Old Standard TT';
 }
+h1 a{
+  background-color: unset;
+  font-size: unset;
+  font-family: unset;
+  padding: unset;
+}
 button{
   cursor: pointer;
 }
 h3 {
   color: #0093B7;
 }
-
+h5{
+  color: red;
+  font-size: 20px;
+}
 header {
   background-color: #003340;
   color: white;

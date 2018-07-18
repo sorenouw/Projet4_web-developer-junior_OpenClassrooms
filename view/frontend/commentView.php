@@ -7,7 +7,13 @@
 <?php
 
 if(isset($_SESSION["flash"])){
-  echo $_SESSION["flash"];
+?>
+<h5>
+<?php
+echo $_SESSION["flash"];
+?>
+</h5>
+<?php
   unset($_SESSION["flash"]);
 }
 ?>

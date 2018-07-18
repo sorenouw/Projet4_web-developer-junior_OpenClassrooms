@@ -1,5 +1,5 @@
 <header>
-<h1>Jean Forteroche</h1>
+<h1><a class="neutral" href="index.php">Jean Forteroche</a></h1>
 <nav>
   <?php if (!empty($_SESSION["user"])) {
     ?>
