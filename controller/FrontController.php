@@ -87,4 +87,7 @@ class FrontController{
     }
     require ('view/frontend/login.php');
   }
+  public function errorPage(){
+    require('view/frontend/errorPage.php');
+  }
 }

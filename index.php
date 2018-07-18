@@ -44,6 +44,9 @@ elseif (isset($_GET['action'])) {
     elseif ($_GET['action'] == 'deleteComment') {
       $backController->deleteComment();
     }
+    elseif ($_GET['action'] == '404') {
+      $frontController->errorPage();
+    }
 }
 else {
     listPosts();
