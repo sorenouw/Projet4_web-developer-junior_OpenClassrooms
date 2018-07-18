@@ -1,9 +1,9 @@
 <?php
 class Database{
-  private static $dbHost = "localhost";
-  private static $dbName = "blog";
-  private static $dbUser = "root";
-  private static $dbUserPassword = "";
+  private static $dbHost = "db745485631.db.1and1.com";
+  private static $dbName = "db745485631";
+  private static $dbUser = "dbo745485631";
+  private static $dbUserPassword = "JeanForteroche0.";
   private static $connection = null;
   public static function connect(){
     try {
