@@ -20,8 +20,9 @@ class FrontController{
         $commentaire = $_POST['comment'];
         $postId = $_GET['id'];
         $validation = true;
-        if (empty($auteur) && empty($commentaire)) {
+        if (empty($auteur) || empty($commentaire)) {
             $validation = false;
+            $_SESSION["flash"] = "Vous avez oublier de remplir le champ Auteur ou le champ Commentaire.";
         }
         if ($validation === true) {
             $commentManager = new CommentManager();
