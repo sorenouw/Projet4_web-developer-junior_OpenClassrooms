@@ -46,10 +46,9 @@ class BackController
         // Récupération du post
         $articleManager = new ArticleManager();
         $id = $_GET['id'];
-        $article = new Article(array(
-          'id'=>$id,
-      ));
-        $editPost = $articleManager->getPost($article);
+        $checkPost = $articleManager->checkPost($id);
+        if($checkPost){
+        $editPost = $articleManager->getPost($id);
 
         // édition
         if (isset($_POST['3']) && !empty($_POST)) {
@@ -70,16 +69,23 @@ class BackController
             }
         }
         require('view/backend/editPost.php');
-    }
+      } else {
+        header("location:index.php?action=404");
+      }
+      }
     public function editComment()
     {
         // Récupération du commentaire
         $commentManager = new CommentManager();
         $id = $_GET['comment_id'];
-        $comment = new Comment(array(
-          'id'=>$id,
-      ));
-        $editComment = $commentManager->getComment($comment);
+
+        $articleManager = new ArticleManager();
+        $post_id = $_GET['id'];
+
+        $checkComment = $commentManager->checkComment($id);
+        $checkPost = $articleManager->checkPost($post_id);
+        if($checkComment & $checkPost){
+        $editComment = $commentManager->getComment($id);
 
         if (isset($_POST['2']) && !empty($_POST)) {
             $newComment = $_POST['comment'];
@@ -99,6 +105,9 @@ class BackController
             }
         }
         require('view/backend/editComment.php');
+      } else {
+        header("location:index.php?action=404");
+      }
     }
     public function newPost()
     {

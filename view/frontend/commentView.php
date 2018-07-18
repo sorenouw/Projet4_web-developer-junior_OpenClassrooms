@@ -4,8 +4,14 @@
   <?php include("view/frontend/nav.php"); ?>
   <?php include("view/frontend/headerImg.php"); ?>
 <p><a class="right" href="index.php">Accueil</a></p>
+<?php
 
-<?php foreach ($post as $post): ?>
+if(isset($_SESSION["flash"])){
+  echo $_SESSION["flash"];
+  unset($_SESSION["flash"]);
+}
+?>
+
   <article class="post_view">
     <h3><?php echo $post->title(); ?></h3>
     <p>
@@ -15,7 +21,6 @@
     </p>
 		<em>le <?php echo $post->date(); ?></em>
   </article>
-<?php endforeach; ?>
 
 
   <h3>Commentaires</h3>

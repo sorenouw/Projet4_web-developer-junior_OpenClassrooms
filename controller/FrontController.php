@@ -7,12 +7,12 @@ class FrontController{
   }
   public function commentView(){
     // Récupération du billet
-        $articleManager = new ArticleManager();
+      $articleManager = new ArticleManager();
       $id = $_GET['id'];
-      $article = new Article(array(
-          'id'=>$id,
-      ));
-      $post = $articleManager->getPost($article);
+      $checkPost = $articleManager->checkPost($id);
+      if($checkPost){
+
+      $post = $articleManager->getPost($id);
 
     // post de commentaire
     if (isset($_POST['1']) && !empty($_POST)) {
@@ -39,6 +39,7 @@ class FrontController{
       'id'=> $id,
     ));
         $commentManager->report($comment);
+        $_SESSION["flash"] = "Vous avez bien signaler le commentaire.";
     } elseif (isset($_POST['5'])) {
         $id = $_GET['comment_id'];
         $commentManager = new CommentManager();
@@ -48,7 +49,7 @@ class FrontController{
         $commentManager->delete($comment);
     }
 
-    // récupération des Commentaires
+  //  récupération des Commentaires
     $commentManager = new CommentManager();
     $postId = $_GET['id'];
     $comment = new Comment(array(
@@ -57,7 +58,12 @@ class FrontController{
     $comments = $commentManager->getList($comment);
 
     require ('view/frontend/commentView.php');
+  } else {
+    header("location:index.php?action=404");
   }
+  }
+
+
   public function login(){
     if (!empty($_POST['login']) && !empty($_POST['password'])) {
         $userManager = new UserManager();

@@ -12,6 +12,7 @@ class CommentManager extends Manager
       'post_id'=> $comment->postId(),
     ));
     }
+
     public function getList(Comment $comment)
     {
         $commentaires = [];
@@ -24,17 +25,17 @@ class CommentManager extends Manager
         }
         return $commentaires;
     }
-    public function getComment(Comment $comment)
+
+    public function getComment($id)
     {
         $req = $this->getDb()->prepare("SELECT * FROM comment WHERE id = :id");
         $req->execute(array(
-       'id'=> $comment->id(),
-   ));
-        while ($data = $req->fetch()) {
-            $getComment[]=new Comment($data);
-        }
+          'id'=> $id,
+        ));
+        $getComment = new Comment($req->fetch());
         return $getComment;
     }
+
     public function editComment(Comment $comment)
     {
       $req = $this->getDb()->prepare("UPDATE comment SET comment = :comment WHERE id = :id");
@@ -43,6 +44,7 @@ class CommentManager extends Manager
       'id'=> $comment->id(),
  ));
     }
+
     public function delete(Comment $comment)
     {
       $req= $this->getDb()->prepare("DELETE FROM comment WHERE id = :id");
@@ -50,6 +52,7 @@ class CommentManager extends Manager
               'id'=> $comment->id(),
           ));
     }
+
     public function report(Comment $comment)
     {
         $req = $this->getDb()->prepare("UPDATE comment SET reported = 1 WHERE id = :id");
@@ -57,6 +60,7 @@ class CommentManager extends Manager
          'id'=> $comment->id(),
      ));
     }
+
     public function getReported()
     {
       $getReported=[];
@@ -66,10 +70,20 @@ class CommentManager extends Manager
         }
         return $getReported;
     }
+
     public function deleteAll(Comment $comment){
       $req= $this->getDb()->prepare("DELETE FROM comment WHERE post_id = :post_id");
       $req->execute(array(
               'post_id'=> $comment->postId(),
           ));
+    }
+
+    public function checkComment($id){
+      $req = $this->getDb()->prepare("SELECT * FROM comment WHERE id = :id");
+      $req->execute(array(
+        'id'=> $id,
+      ));
+      $getComment = $req->fetch();
+      return $getComment;
     }
 }

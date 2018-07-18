@@ -9,7 +9,7 @@
     <form class="" action="index.php?action=login" method="post">
       <input type="text" name="login" value="" placeholder="login">
       <input type="password" name="password" value="" placeholder="password">
-      <button type="submit" name="button">CLIQUEEEEEEEEEEEZ</button>
+      <button type="submit" name="button">Connection</button>
     </form>
 
 
